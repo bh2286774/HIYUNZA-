@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#031b14">
+<title>HIYUNZA — International AI Creation Platform</title>
+<style>
+:root{--bg:#02170f;--bg2:#063522;--green:#00e676;--green2:#00a85f;--ink:#061b12;--muted:#65776d;--paper:#ffffff;--white:#fff;--line:#dce9e1;--shadow:0 12px 34px #00180f1c}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f3f8f5;color:var(--ink)}
+button,input{font:inherit}button{cursor:pointer}.app{min-height:100vh;max-width:1440px;margin:auto;background:#f8fbf9;display:grid;grid-template-columns:250px 1fr}
+.sidebar{background:linear-gradient(180deg,#031b14,#06150f);color:white;padding:26px 18px;display:flex;flex-direction:column;gap:28px;min-height:100vh;position:sticky;top:0;height:100vh}
+.brand{display:flex;align-items:center;gap:11px;padding:3px 9px}.brand-mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#00f18a,#008b50);display:grid;place-items:center;color:#002516;font-size:23px;font-weight:900;box-shadow:0 0 22px #00d87945}.brand-name{font-size:22px;font-weight:850;letter-spacing:.5px}.brand-tag{font-size:9px;letter-spacing:1.4px;color:#a8c8b8;margin-top:2px}
+.nav{display:grid;gap:8px}.nav button{border:0;color:#c3d4cb;background:transparent;text-align:left;padding:13px 14px;border-radius:13px;font-weight:650;display:flex;gap:13px;align-items:center}.nav button.active,.nav button:hover{background:#0d3829;color:#55ffae}.nav .ico{font-size:19px;width:22px;text-align:center}.side-bottom{margin-top:auto}.credit{background:#0b3022;border:1px solid #1a5038;padding:15px;border-radius:16px}.credit small{color:#9bb9a9}.credit strong{display:block;font-size:22px;margin:5px 0;color:#5dffad}.credit button{width:100%;background:var(--green);border:0;border-radius:10px;padding:10px;font-weight:800;color:#032217}
+.main{min-width:0}.topbar{height:76px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 34px;position:sticky;top:0;z-index:5}.crumb{font-weight:800;font-size:19px}.top-actions{display:flex;align-items:center;gap:13px}.icon-btn{border:1px solid var(--line);background:white;width:40px;height:40px;border-radius:12px;font-size:17px}.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#b5e8cf,#087d4a);display:grid;place-items:center;color:#034126;font-weight:900}
+.content{padding:30px 34px 60px;max-width:1200px;margin:auto}.page{display:none}.page.active{display:block}.eyebrow{color:#009b59;font-size:11px;letter-spacing:1.8px;font-weight:850;text-transform:uppercase}.heading{font-size:30px;letter-spacing:-.8px;margin:7px 0 7px}.sub{color:#718078;margin:0 0 24px}.hero{background:radial-gradient(circle at 82% 18%,#087a49 0,#06442c 32%,#020f0a 78%);border-radius:24px;color:#fff;padding:30px;display:flex;align-items:center;justify-content:space-between;gap:20px;overflow:hidden;position:relative;box-shadow:var(--shadow)}.hero:after{content:"✦";position:absolute;font-size:210px;color:#ffffff09;right:20%;top:-65px}.hero h2{font-size:27px;margin:7px 0}.hero p{color:#c0dfcf;max-width:470px;line-height:1.6}.primary{background:var(--green);color:#032217;border:0;padding:12px 18px;border-radius:12px;font-weight:850;box-shadow:0 5px 16px #00d87935}.secondary{background:#fff;border:1px solid var(--line);padding:11px 15px;border-radius:11px;font-weight:750;color:#17392a}.hero .primary{position:relative;z-index:1;white-space:nowrap}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin:27px 0 14px}.section-head h3{margin:0;font-size:18px}.muted-link{border:0;background:none;color:#008d53;font-weight:750}
+.tools{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.tool{background:white;border:1px solid var(--line);border-radius:17px;padding:18px;min-height:140px;box-shadow:0 5px 18px #00201008;transition:.2s}.tool:hover,.template:hover,.character:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.tool-icon{width:43px;height:43px;border-radius:13px;background:#d9f7e7;color:#007d49;display:grid;place-items:center;font-size:22px;margin-bottom:13px}.tool b{display:block;font-size:15px}.tool span{display:block;color:#7a8981;font-size:12px;margin-top:5px;line-height:1.4}
+.project-row{display:flex;align-items:center;gap:14px;background:white;border:1px solid var(--line);border-radius:16px;padding:15px;margin-top:20px}.folder{width:44px;height:44px;background:#d9f7e7;border-radius:13px;display:grid;place-items:center;font-size:21px}.project-row div:nth-child(2){flex:1}.project-row small{color:var(--muted)}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.quick button{border:1px solid var(--line);background:white;border-radius:15px;padding:15px 8px;font-weight:750;color:#173b2a}.quick span{display:block;font-size:22px;margin-bottom:6px;color:#008b50}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:18px 0}.search{flex:1;min-width:190px;border:1px solid var(--line);background:white;border-radius:13px;padding:12px 15px;outline:none}.search:focus{border-color:#00b86a;box-shadow:0 0 0 3px #00d8791a}.chip{border:1px solid var(--line);background:white;border-radius:30px;padding:9px 14px;color:#456052;font-size:12px;font-weight:750}.chip.active{background:#063d29;color:#69ffb3;border-color:#063d29}
+.template-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}.template{background:white;border:1px solid var(--line);border-radius:17px;overflow:hidden;transition:.2s}.thumb{height:165px;display:grid;place-items:center;color:#fff;font-size:38px;position:relative;overflow:hidden}.thumb:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#ffffff15,transparent 45%,#00190d80)}.thumb span{position:relative;text-shadow:0 4px 14px #0008}.thumb small{position:absolute;bottom:10px;right:10px;background:#00180dcc;padding:5px 8px;border-radius:7px;font-size:10px}.t1{background:linear-gradient(135deg,#6bb4c0,#174c43 55%,#c5d5a1)}.t2{background:linear-gradient(135deg,#e6b0a1,#a14f6a 50%,#311c37)}.t3{background:linear-gradient(135deg,#121d55,#1767a1 50%,#07182b)}.t4{background:linear-gradient(135deg,#9c6fbe,#372c72 55%,#101b39)}.t5{background:linear-gradient(135deg,#f0ad70,#9c4436 55%,#321e29)}.t6{background:linear-gradient(135deg,#9aaeb2,#243b42 55%,#071b1a)}.t7{background:linear-gradient(135deg,#a7c2d7,#356b70 55%,#152b37)}.t8{background:linear-gradient(135deg,#d6c08b,#5e6545 55%,#1c3327)}.meta{padding:12px 13px}.meta b{font-size:13px}.meta p{font-size:11px;color:#839087;margin:5px 0 0}
+.character-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.character{background:white;border:1px solid var(--line);border-radius:17px;overflow:hidden;transition:.2s}.char-art{height:190px;display:grid;place-items:center;font-size:64px;background:linear-gradient(145deg,#d8e9df,#789f8a 50%,#183b2b)}.char-art.alt{background:linear-gradient(145deg,#f1d6cb,#c28d82 50%,#684b4d)}.char-art.alt2{background:linear-gradient(145deg,#d6d9ed,#858cb4 50%,#33385b)}.char-info{padding:13px;display:flex;justify-content:space-between;align-items:center}.char-info small{display:block;color:#839087;margin-top:4px}.tag{font-size:10px;background:#d9f7e7;color:#007d49;padding:5px 8px;border-radius:20px;font-weight:800}
+.profile-cover{height:175px;border-radius:20px;background:radial-gradient(circle at 70% 20%,#138d56,#073a28 45%,#031b14);position:relative}.profile-card{background:white;border:1px solid var(--line);border-radius:20px;margin:-55px 18px 0;position:relative;padding:0 22px 20px;text-align:center;box-shadow:var(--shadow)}.profile-avatar{width:94px;height:94px;border:5px solid white;border-radius:50%;background:linear-gradient(135deg,#a6e6c3,#087f4a);display:grid;place-items:center;font-size:34px;margin:-47px auto 8px}.stats{display:flex;justify-content:center;gap:0;margin:18px auto}.stats div{padding:0 25px;border-right:1px solid var(--line)}.stats div:last-child{border:0}.stats b{display:block;font-size:19px}.stats small{color:#839087}.profile-tabs{display:flex;gap:10px;border-bottom:1px solid var(--line);margin-top:22px}.profile-tabs button{border:0;background:none;padding:13px 17px;font-weight:750;color:#6b7c72}.profile-tabs button.active{color:#00894e;border-bottom:3px solid #00c873}
+.inbox-list{display:grid;gap:12px}.notice{background:white;border:1px solid var(--line);border-radius:15px;padding:16px;display:flex;gap:13px;align-items:center}.notice-icon{width:42px;height:42px;background:#d9f7e7;color:#007d49;border-radius:13px;display:grid;place-items:center;font-size:19px}.notice p{margin:4px 0 0;color:#7d8b83;font-size:12px}
+.modal-backdrop{position:fixed;inset:0;background:#00170f9c;display:none;align-items:center;justify-content:center;padding:18px;z-index:20}.modal-backdrop.show{display:flex}.modal{background:white;border-radius:20px;padding:24px;width:min(440px,100%);box-shadow:0 25px 70px #00180f55}.modal h3{margin:0 0 7px}.modal p{color:#75847b;font-size:13px;line-height:1.5}.modal input{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;margin:7px 0 14px}.modal-actions{display:flex;justify-content:flex-end;gap:9px}
+.bottom-nav{display:none}
+.footer-note{font-size:11px;color:#89968f;text-align:center;margin-top:35px}
+@media(max-width:950px){.app{grid-template-columns:205px 1fr}.tools{grid-template-columns:repeat(2,1fr)}.template-grid{grid-template-columns:repeat(3,1fr)}.character-grid{grid-template-columns:repeat(2,1fr)}.content{padding:24px}}
+@media(max-width:650px){body{background:var(--paper)}.app{display:block}.sidebar{display:none}.topbar{height:62px;padding:0 17px}.crumb{font-size:17px}.content{padding:21px 15px 95px}.heading{font-size:25px}.hero{padding:23px 19px;display:block}.hero h2{font-size:23px}.hero .primary{margin-top:7px}.tools{gap:10px}.tool{padding:14px;min-height:130px}.template-grid{grid-template-columns:repeat(2,1fr);gap:11px}.thumb{height:145px}.character-grid{grid-template-columns:repeat(2,1fr);gap:11px}.char-art{height:145px}.quick{gap:8px}.quick button{font-size:12px;padding:12px 4px}.quick span{font-size:20px}.top-actions .icon-btn:first-child{display:none}.bottom-nav{display:flex;position:fixed;bottom:0;left:0;right:0;background:#020f0a;color:#d5e7dc;padding:9px 5px calc(9px + env(safe-area-inset-bottom));justify-content:space-around;z-index:10;border-top:1px solid #17442f}.bottom-nav button{border:0;background:none;color:inherit;font-size:10px;display:grid;gap:4px;justify-items:center;min-width:54px}.bottom-nav button span{font-size:19px}.bottom-nav button.active{color:#48ffa4}.profile-card{margin-left:7px;margin-right:7px;padding-left:8px;padding-right:8px}.stats div{padding:0 16px}.profile-cover{height:145px}}
+
+/* HIYUNZA brand palette refinement: richer emerald, forest green and less white */
+:root{
+ --bg:#031b13;--bg2:#06452d;--green:#00ef83;--green2:#00bd70;
+ --ink:#eafff3;--muted:#a7cbbb;--paper:#082d20;--white:#f1fff7;
+ --line:#176344;--shadow:0 14px 36px #00170f55
+}
+body{background:#031b13;color:#eafff3}
+.app{background:linear-gradient(145deg,#082d20,#041b13 70%)}
+.sidebar{background:linear-gradient(180deg,#031b13,#052c1d 55%,#02140e)}
+.topbar{background:linear-gradient(100deg,#073a27,#052719);border-bottom:1px solid #176344;color:#f2fff7}
+.icon-btn{background:#0b442e;border-color:#247653;color:#eafff3}
+.avatar{background:linear-gradient(135deg,#a4ffd0,#00a85f);color:#032719}
+.content{color:#eafff3}
+.eyebrow{color:#36f5a0}
+.sub{color:#b1d0c0}
+.hero{background:radial-gradient(circle at 78% 15%,#10a968 0,#087344 28%,#043a27 58%,#02170f 100%);border:1px solid #168653}
+.hero p{color:#d2f5e2}
+.primary{background:linear-gradient(135deg,#39ff9e,#00c875 70%,#00a85f);color:#032719;box-shadow:0 6px 22px #00ed8240}
+.secondary{background:linear-gradient(135deg,#0d4a32,#073321);border:1px solid #277b55;color:#eafff3}
+.section-head h3,.heading,.crumb{color:#effff5}
+.tool,.project-row,.template,.character,.notice,.modal{
+ background:linear-gradient(145deg,#104a33,#082e20 72%,#062619);
+ border:1px solid #1c704b;color:#effff5;
+ box-shadow:0 8px 24px #00180f35
+}
+.tool span,.project-row small,.meta p,.char-info small,.stats small,
+.profile-tabs button,.modal p{color:#b1cdbd}
+.tool-icon,.folder,.notice-icon{
+ background:linear-gradient(145deg,#b6ffda,#28d987 65%,#07995a);
+ color:#03452b
+}
+.search{background:#0a3a29;border-color:#247653;color:#f1fff7}
+.search::placeholder{color:#b0d1bf}
+.search:focus{border-color:#35f59d;box-shadow:0 0 0 3px #00e67625}
+.chip{background:#0a3a29;border-color:#247653;color:#cdebd9}
+.chip.active{background:linear-gradient(135deg,#16c978,#007b49);color:#fff;border-color:#25d98a}
+.t1{background:linear-gradient(135deg,#2bd59a,#08734e 55%,#063a2a)}
+.t2{background:linear-gradient(135deg,#67d9a0,#168b60 55%,#073d2b)}
+.t3{background:linear-gradient(135deg,#0a6548,#0a9b68 50%,#03281d)}
+.t4{background:linear-gradient(135deg,#3bcf91,#147a59 55%,#062c25)}
+.t5{background:linear-gradient(135deg,#a0e7b6,#279b69 55%,#073c2b)}
+.t6{background:linear-gradient(135deg,#7bbda0,#23694f 55%,#06281e)}
+.t7{background:linear-gradient(135deg,#a4e9c2,#268b63 55%,#073b2b)}
+.t8{background:linear-gradient(135deg,#b4ed9c,#3b9b57 55%,#0b4028)}
+.char-art{background:linear-gradient(145deg,#a9e9c4,#24865a 52%,#073b28)}
+.char-art.alt{background:linear-gradient(145deg,#9de7c2,#16865e 52%,#073b2c)}
+.char-art.alt2{background:linear-gradient(145deg,#b2efc9,#328c68 52%,#0a3d30)}
+.profile-cover{background:radial-gradient(circle at 70% 20%,#16b96e,#087344 42%,#02170f)}
+.profile-card{background:linear-gradient(145deg,#f0fff6,#c9f7dd);color:#062b1c;border-color:#42a978}
+.profile-avatar{background:linear-gradient(135deg,#b4ffd5,#00a85f);color:#032719}
+.profile-tabs{border-color:#176344}
+.profile-tabs button.active{color:#43f6a2;border-bottom-color:#19e58a}
+.tag{background:#b9f7d4;color:#075a37}
+.notice p{color:#b1cdbd}
+.modal-backdrop{background:#00170fd9}
+.modal{background:linear-gradient(145deg,#104a33,#062719)}
+.modal input{background:#082f21;border-color:#247653;color:#f1fff7}
+.footer-note{color:#a5c9b6}
+@media(max-width:650px){
+ body{background:#031b13}
+ .app{background:#06291d}
+ .topbar{background:linear-gradient(100deg,#073a27,#052719)}
+ .content{background:linear-gradient(180deg,#082f21,#041d14 70%);color:#effff5}
+ .profile-card{background:linear-gradient(145deg,#f0fff6,#c9f7dd);color:#062b1c}
+}
+
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="brand-mark">✦</div><div><div class="brand-name">HIYUNZA</div><div class="brand-tag">INTERNATIONAL AI CREATION</div></div></div>
+  <nav class="nav" aria-label="Main navigation">
+    <button class="active" data-page="home"><span class="ico">⌂</span>Home</button>
+    <button data-page="templates"><span class="ico">▧</span>Templates</button>
+    <button data-page="characters"><span class="ico">♙</span>Characters</button>
+    <button data-page="profile"><span class="ico">◉</span>Profile</button>
+    <button data-page="inbox"><span class="ico">✉</span>Inbox</button>
+  </nav>
+  <div class="side-bottom"><div class="credit"><small>Available balance</small><strong>120 tokens</strong><button id="buyTokens">Explore packages</button></div></div>
+</aside>
+<main class="main">
+<header class="topbar"><div class="crumb" id="pageTitle">Home</div><div class="top-actions"><button class="icon-btn" aria-label="Search" id="topSearch">⌕</button><button class="icon-btn" aria-label="Notifications" data-go="inbox">♧</button><div class="avatar">H</div></div></header>
+<div class="content">
+<section class="page active" id="home">
+  <div class="eyebrow">Create without limits</div><h1 class="heading">Bring your imagination to life.</h1><p class="sub">Your creative studio, powered by AI.</p>
+  <div class="hero"><div><div class="eyebrow" style="color:#65ffb0">WELCOME TO HIYUNZA</div><h2>What will you create today?</h2><p>Turn your ideas into images, videos, voices and characters with your AI creative studio.</p><button class="primary" data-go="templates">Explore templates&nbsp; →</button></div><div style="font-size:72px;opacity:.9;position:relative;z-index:1">✧</div></div>
+  <div class="section-head"><h3>AI Creation Studio</h3><span class="eyebrow">4 CREATION TOOLS</span></div>
+  <div class="tools">
+    <button class="tool" data-modal="Image generation"><div class="tool-icon">▧</div><b>Text to Image</b><span>Create stunning images from a simple prompt.</span></button>
+    <button class="tool" data-modal="Video generation"><div class="tool-icon">▶</div><b>Text to Video</b><span>Turn your words into engaging videos.</span></button>
+    <button class="tool" data-modal="Voice generation"><div class="tool-icon">≋</div><b>AI Voice</b><span>Bring your scripts to life with AI voices.</span></button>
+    <button class="tool" data-go="characters"><div class="tool-icon">♙</div><b>AI Characters</b><span>Create and manage your own characters.</span></button>
+  </div>
+  <div class="project-row"><div class="folder">▣</div><div><b>Your Projects</b><br><small>Saved creations will appear here.</small></div><button class="secondary" data-modal="Your projects">Open&nbsp; →</button></div>
+
+</section>
+
+<section class="page" id="templates">
+  <div class="eyebrow">Discover & create</div><h1 class="heading">Explore Templates</h1><p class="sub">Find inspiration and make every idea your own.</p>
+  <div class="toolbar"><input class="search" id="templateSearch" placeholder="⌕  Search templates..." aria-label="Search templates"><button class="chip active" data-filter="All">All</button><button class="chip" data-filter="Video">Video</button><button class="chip" data-filter="Photo">Photo</button><button class="chip" data-filter="AI">AI</button><button class="chip" data-filter="Anime">Anime</button></div>
+  <div class="template-grid" id="templateGrid"></div>
+</section>
+
+<section class="page" id="characters">
+  <div class="eyebrow">Your creative universe</div><h1 class="heading">Characters</h1><p class="sub">Create unique AI characters and keep them organized.</p>
+  <div class="hero" style="padding:20px 24px;margin-bottom:24px"><div><h2 style="font-size:21px;margin:0 0 5px">Create a new character</h2><p style="margin:0">Bring an original personality to life.</p></div><button class="primary" data-modal="New character">＋ New Project</button></div>
+  <div class="section-head"><h3>My Characters</h3><span class="eyebrow">3 SAVED</span></div>
+  <div class="character-grid">
+    <article class="character"><div class="char-art">🧑🏻‍🎤</div><div class="char-info"><div><b>Abroin</b><small>Default character</small></div><span class="tag">Default</span></div></article>
+    <article class="character"><div class="char-art alt">👩🏻</div><div class="char-info"><div><b>Sara</b><small>Created recently</small></div><span>•••</span></div></article>
+    <article class="character"><div class="char-art alt2">🧝🏻</div><div class="char-info"><div><b>Zain</b><small>Created recently</small></div><span>•••</span></div></article>
+  </div>
+</section>
+
+<section class="page" id="profile">
+  <div class="profile-cover"></div><div class="profile-card"><div class="profile-avatar">H</div><h2 style="margin:4px 0">HIYUNZA Creator</h2><div style="color:#718078;font-size:13px">@your_nickname</div><div class="stats"><div><b>0</b><small>Followers</small></div><div><b>0</b><small>Following</small></div><div><b>0</b><small>Likes</small></div></div><button class="secondary" id="editProfile">Edit profile</button></div>
+  <div class="profile-tabs"><button class="active">My Templates</button><button>My Creations</button><button data-go="inbox">Inbox</button></div>
+  <div style="padding:35px;text-align:center;color:#819087">Your published creations will appear here.</div>
+</section>
+
+<section class="page" id="inbox">
+  <div class="eyebrow">Stay in the loop</div><h1 class="heading">Inbox</h1><p class="sub">Creator updates, platform news and account notifications.</p>
+  <div class="inbox-list">
+    <div class="notice"><div class="notice-icon">✦</div><div><b>Welcome to HIYUNZA</b><p>Your creative journey starts here. Explore the tools and make something amazing.</p></div></div>
+    <div class="notice"><div class="notice-icon">▤</div><div><b>Template insights</b><p>When you publish templates, views and usage statistics will appear here.</p></div></div>
+    <div class="notice"><div class="notice-icon">♧</div><div><b>Creator notifications</b><p>Updates from creators and the HIYUNZA platform will appear here.</p></div></div>
+  </div>
+</section>
+
+</div>
+</main>
+</div>
+<nav class="bottom-nav">
+<button class="active" data-page="home"><span>⌂</span>Home</button><button data-page="templates"><span>▧</span>Templates</button><button data-page="characters"><span>♙</span>Characters</button><button data-page="profile"><span>◉</span>Profile</button>
+</nav>
+<div class="modal-backdrop" id="modal"><div class="modal"><h3 id="modalTitle">Coming soon</h3><p id="modalText">This screen is part of the frontend preview. Real AI generation and account services will be connected in the backend phase.</p><input id="modalInput" placeholder="Enter a name or idea" style="display:none"><div class="modal-actions"><button class="secondary" id="closeModal">Close</button><button class="primary" id="modalAction">Continue</button></div></div></div>
+<script>
+const titles={home:"Home",templates:"Templates",characters:"Characters",profile:"Profile",inbox:"Inbox"};
+function go(page){document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===page));document.querySelectorAll("[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page===page));document.getElementById("pageTitle").textContent=titles[page]||"Home";window.scrollTo({top:0,behavior:"smooth"})}
+document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.page)));
+document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.go)));
+document.querySelectorAll("[data-modal]").forEach(b=>b.addEventListener("click",()=>openModal(b.dataset.modal)));
+document.getElementById("topSearch").addEventListener("click",()=>{go("templates");document.getElementById("templateSearch").focus()});
+const templates=[
+["Cinematic Nature","Video","12.4K uses","t1","🏞️"],["Portrait Aesthetic","Photo","8.7K uses","t2","✧"],["City Vibes","Video","15.2K uses","t3","🌃"],["Anime Style","Anime","20.1K uses","t4","🌸"],["Love Story","Video","9.3K uses","t5","♡"],["Dark Fantasy","AI","11.7K uses","t6","⚔"],["Dreamscape","Photo","6.2K uses","t7","☁"],["Golden Hour","AI","4.8K uses","t8","☀"]
+];
+function renderTemplates(){const q=document.getElementById("templateSearch").value.toLowerCase();const active=document.querySelector(".chip.active").dataset.filter;document.getElementById("templateGrid").innerHTML=templates.filter(t=>(active==="All"||t[1]===active||active==="AI"&&t[1]==="Anime")&&(t[0].toLowerCase().includes(q)||t[1].toLowerCase().includes(q))).map(t=>`<article class="template"><div class="thumb ${t[3]}"><span>${t[4]}</span><small>▶ 00:15</small></div><div class="meta"><b>${t[0]}</b><p>${t[1]} · ${t[2]}</p></div></article>`).join("")||'<p style="color:#7b8b82">No templates found.</p>'}
+document.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));b.classList.add("active");renderTemplates()}));
+document.getElementById("templateSearch").addEventListener("input",renderTemplates);renderTemplates();
+const modal=document.getElementById("modal");
+function openModal(name){document.getElementById("modalTitle").textContent=name;const isCharacter=name==="New character";document.getElementById("modalInput").style.display=isCharacter?"block":"none";document.getElementById("modalText").textContent=isCharacter?"Character creation interface preview. The 3-token charge and actual AI character generation will be enabled after backend and AI provider integration.":"This is a visual frontend preview. Real AI generation, saving, token deductions and account services require backend setup and approved provider credentials.";document.getElementById("modalAction").textContent=isCharacter?"Save draft":"Got it";modal.classList.add("show")}
+document.getElementById("closeModal").onclick=()=>modal.classList.remove("show");document.getElementById("modalAction").onclick=()=>modal.classList.remove("show");modal.addEventListener("click",e=>{if(e.target===modal)modal.classList.remove("show")});
+document.getElementById("buyTokens").onclick=()=>openModal("Token packages");document.getElementById("editProfile").onclick=()=>openModal("Edit profile");
+</script>
+</body></html>
